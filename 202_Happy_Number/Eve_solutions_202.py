@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/happy-number/
+
 class Solution:
     def isHappy(self, n: int) -> bool:
         # Method 1: Use Set
@@ -11,6 +13,8 @@ class Solution:
                 mem.add(n)
             
         return True  
+
+
         
 
         # Method 2: Use Dictionary
