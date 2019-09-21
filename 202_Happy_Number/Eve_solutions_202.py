@@ -28,4 +28,17 @@ class Solution:
                 hashmap[n] = True # Add a dummy variable to detect endless cycle
 
         return True
+
+
+
+	# Method 3: Use List
+        res = []
         
+        while n != 1:
+            n = sum(int(i) ** 2 for i in str(n))
+            if n in res:
+                return False
+            else:
+                res.append(n)
+                
+        return True        
