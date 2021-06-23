@@ -25,21 +25,22 @@
 
 # Solution C: Binary Search
 # 思路: 因為一定有解，而且數組是有序的，那麼第一個數字肯定要小於目標值target，那麼我們每次用二分法來搜索target - numbers[i]即可
-# Status: Wrong answer......
+# Note: 翻筆記去查為什麼 left = i + 1 且必須 while left <= right
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         for i in range(len(numbers)):
-            left = i
+            left = i + 1
             right = len(numbers) - 1
             tmp = target - numbers[i]
             
-            while left < right:
-                mid = left + (left - right) // 2
-                if tmp == numbers[mid]: 
+            while left <= right:
+                mid = left + (right - left) // 2
+                if numbers[mid] == tmp:
                     return [i + 1, mid + 1]
-                elif tmp > numbers[mid]:
-                    left += 1
-                elif tmp < numbers[mid]:
-                    right -= 1
+                elif numbers[mid] < tmp:
+                    left = mid + 1
+                elif numbers[mid] > tmp:
+                    right = mid - 1
                     
+
 
