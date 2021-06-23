@@ -1,4 +1,6 @@
 
+# Link: https://leetcode.com/problems/two-sum-iii-data-structure-design/
+
 # Solution A: Use list and hashmap (key = num, value = index)
 class TwoSum:
 
