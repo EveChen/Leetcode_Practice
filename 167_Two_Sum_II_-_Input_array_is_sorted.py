@@ -26,7 +26,8 @@
 #                 return [left + 1, right + 1]
 
 # Solution C: Binary Search
-# 思路: 因為一定有解，而且數組是有序的，那麼第一個數字肯定要小於目標值target，那麼我們每次用二分法來搜索target - numbers[i]即可
+# 思路 1: 因為一定有解，而且數組是有序的，那麼第一個數字肯定要小於目標值target，那麼我們每次用二分法來搜索target - numbers[i]即可
+# 思路 2: 於是先把欲求的和，扣掉任一數字後，再從剩下的數字中，找有沒有剛剛的差，若找到，就是這兩個 index 可以合成
 # Note: 翻筆記去查為什麼 left = i + 1 且必須 while left <= right
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
