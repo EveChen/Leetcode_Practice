@@ -1,18 +1,18 @@
 
 # Link: https://leetcode.com/problems/longest-common-prefix/
 
-# Solution A: Vertical scanning
-class Solution:
-    def longestCommonPrefix(self, strs: List[str]) -> str:
-        if strs == None:
-            return ""
-        for i in range(len(strs[0])): 
-            for j in range(1,len(strs)):
-                # Case 1: 代表 strs[0] 長度和 strs[j] 不相等，return
-                # Case 2: 代表 strs[j][i] 的 char 不等於 strs[0][i] 的 char，return
-                if i == len(strs[j]) or strs[j][i] != strs[0][i]:
-                    return strs[0][:i]
-        return strs[0]
+# solution A: Vertical scanning
+# class Solution:
+#     def longestCommonPrefix(self, strs: List[str]) -> str:
+#         if strs == None:
+#             return ""
+#         for i in range(len(strs[0])): 
+#             for j in range(1,len(strs)):
+# # Case 1: 代表當 strs[0] 的長度和 strs[j] 不相等時，return
+# # Case 2: 代表 strs[j][i] 的 char 不等於 strs[0][i] 的 char，return
+#                 if i == len(strs[j]) or strs[j][i] != strs[0][i]:
+#                     return strs[0][:i]
+#         return strs[0]
 
 
 
@@ -79,6 +79,60 @@ class Solution:
 #         return os.path.commonprefix(strs)
 
 
+# Solution E: Divide & Conquer
+# Q: Ask CA about the time complexity
+# class Solution:
+#     def longestCommonPrefix(self, strs: List[str]) -> str:
+#         if not strs:
+#             return ""
+        
+#         def find_commonPrefix(left, right):
+#             min_length = min(len(left), len(right))
+#             for i in range(min_length):
+#                 if left[i] != right[i]:
+#                     return left[:i]
+#             return left[:min_length]
+            
+#         # recursion    
+#         def find_longestCommonPrefix(strs, left_index, right_index):
+#             if left_index == right_index:
+#                 return strs[left_index]
+#             else:
+#                 mid_index = (left_index + right_index) // 2
+#                 lcpleft = find_longestCommonPrefix(strs, left_index, mid_index)
+#                 lcpright = find_longestCommonPrefix(strs, mid_index + 1, right_index)
+#             return find_commonPrefix(lcpleft, lcpright)
+            
+#         return find_longestCommonPrefix(strs, 0, len(strs) - 1)
+
+
+# Solution F: Binary search
+# Q: Ask ca about the time complexity
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        if len(strs) == 0:
+            return ""
+        
+        def isCommonPrefix(strs, length):
+            substring = strs[0][:length]
+            
+            for i in range(1, len(strs)):
+                if not strs[i].startswith(substring):
+                    return False
+            return True
+        
+        # Binary search
+        min_length = len(min(strs, key = len))
+        low, high = 1, min_length # Q: why low == 1?
+        
+        while (low <= high):
+            mid = (low + high) // 2
+            if isCommonPrefix(strs, mid):
+                low = mid + 1
+            else:
+                high = mid - 1
+        return strs[0][:high]
+        
 
     
                     
