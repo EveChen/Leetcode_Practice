@@ -5,7 +5,7 @@
 # 用特殊技巧 res = 0, res = res * 10 + x % 10 且 x = x // 10 (注意負數x)，為什麼要注意負數? 看筆記 -123 % 10 = 7
 # Solution A: 用特殊方法求個位十位百位數，記得設定flag
 # 需要注意overflow/underflow問題: int型的数值范围是 -2147483648～2147483647
-# Time = O(n)
+# Time = O(n) --> Ask ca? Leetcode answer shows O(log(n))
 class Solution:
     def reverse(self, x):
         """
