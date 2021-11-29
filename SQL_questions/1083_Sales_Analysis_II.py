@@ -1,5 +1,5 @@
 
-# Link: https://leetcode.com/problems/sales-analysis-ii/
+# https://leetcode.com/problems/sales-analysis-ii/
 
 # Failed solution: 不能用 WHERE 直接判斷，因為 query 只能一條條判斷「當前」buyer 購買的手機是否含有 'S8' 字樣? 或者沒有包含 'iPhone' 字樣，若相同的 buyer_id 出現多次，query 無法判斷
 # SELECT DISTINCT buyer_id
@@ -37,5 +37,18 @@ WHERE product_name = 'S8' AND
                     FROM Sales s JOIN Product p
                                 ON s.product_id = p.product_id
                     WHERE product_name = 'iPhone')
+										
+-- # Solution C: 用 Except 語法
+Select Distinct buyer_id
+From Sales s Join Product p On s.product_id = p.product_id
+Where product_name = 'S8'
+
+Except
+
+Select Distinct buyer_id
+From Sales s Join Product p On s.product_id = p.product_id
+Where product_name = 'iPhone'
+
+
 
             
