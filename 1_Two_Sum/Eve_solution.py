@@ -6,7 +6,7 @@ class Solution:
         :type target: int
         :rtype: List[int]
         """
-        # Method: 用hashmap解
+        # Method 1: 用hashmap解
         # Time: O(n), We traverse the list containing n elements only once，每個值是O(1)
         # Space: O(n), 我們存了n個值在hashmap中
         hashmap = {}
@@ -18,6 +18,15 @@ class Solution:
         return [-1] #之前是寫return [-1, -1] #也可以不加這行
 				
 				
+# Method 2: Another way to use hashmap (more understandable)
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hashmap = {}
+        for i, n in enumerate(nums):
+            diff = target - n
+            if diff in hashmap:
+                return [hashmap[diff], i]
+            hashmap[n] = i
 				
 				# Brute Force: time = O(n^2), space = O(1)
         # for i in range(0, len(nums)):
