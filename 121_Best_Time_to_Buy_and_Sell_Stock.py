@@ -78,29 +78,4 @@ class Solution:
 
 
 
-# Wrong because these codes treat as if I can buy/sell multiple times
-# e.g. [7, 1, 5, 3, 6, 4] --> 5 - 1 = 4 & 6 - 3 = 3, 4 + 3 = 7
-# class Solution:
-#     def maxProfit(self, prices: List[int]) -> int:
-#         result = 0
-
-#         for i in range(0, len(prices) - 1):
-#             if prices[i] < prices[i + 1]:
-#                 result += prices[i + 1] - prices[i]
-#         return result
-
-# Wrong: reason same as above
-# class Solution:
-#     def maxProfit(self, prices: List[int]) -> int:
-#         result = 0
-
-#         if len(prices) == 1:
-#             result = 0
-#         else:
-#             for i in range(1, len(prices)):
-#                 if prices[i] > prices[i - 1]:
-#                     result += prices[i] - prices[i - 1]
-#             return result
-
-
 
