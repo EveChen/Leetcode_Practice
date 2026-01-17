@@ -6,7 +6,7 @@ class Solution:
         :type target: int
         :rtype: List[int]
         """
-        # Method 1: 用hashmap解
+        # Method 1: 用hashmap解 {value : index}
         # Time: O(n), We traverse the list containing n elements only once，每個值是O(1)
         # Space: O(n), 我們存了n個值在hashmap中
         hashmap = {}
